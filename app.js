@@ -9,6 +9,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 db.connect()
 
+// set middleware , whenever request to url that have a "/api" will trigger apiUser
 app.use('/api', apiUser)
 
 app.listen(port, () => {

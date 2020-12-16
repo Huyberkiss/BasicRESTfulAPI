@@ -1,8 +1,16 @@
 
 const UserModel = require('../models/PostModel')
 
+/**
+ * Here i used async/ await to get a document from query to mongdob
+ * 
+ * Defaulted setting is true logic, so i may lazy to add a try-catch block/ hope u will put it :D
+ */
+
 class UserController {
 
+
+    //[GET]
     async getAll(req, res) {
         // PostModel.find()
         //     .then(post => res.json(post))
@@ -14,6 +22,7 @@ class UserController {
 
     }
 
+    //[GET]: id
     async getUserById(req, res) {
 
         let postResult = await UserModel.findById(req.params.id)
@@ -21,7 +30,7 @@ class UserController {
         res.json(postResult)
 
     }
-
+    //[POST]
     async addNewUser(req, res) {
 
 
@@ -37,12 +46,14 @@ class UserController {
 
     }
 
+    //[PUT]
     async update(req, res) {
         let UpdateUser = await UserModel.updateOne({ _id: req.params.id }, req.body)
         res.json(UpdateUser)
     }
 
 
+    //[DELETE]
     async delete(req, res) {
         let deleteUser = await UserModel.deleteOne({ _id: req.params.id })
         res.json(deleteUser)
